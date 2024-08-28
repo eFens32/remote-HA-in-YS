@@ -1,0 +1,103 @@
+# Добавление команд в Yandex smart home
+
+yandex_smart_home:
+  filter:
+    include_entities:
+      - script.up
+      - script.left
+      - script.center
+      - script.right
+      - script.back
+      - script.down
+      - script.home
+      - script.previous
+      - script.next
+      - script.youtube
+      - script.kodi
+      - script.channel
+# Скрипт выполнений команд
+
+script:
+  up:
+    sequence:
+      - service: remote.send_command
+        data:
+          entity_id: remote.smart_tv
+          command: DPAD_UP
+
+  down:
+    sequence:
+      - service: remote.send_command
+        data:
+          entity_id: remote.smart_tv
+          command: DPAD_DOWN
+
+  left:
+    sequence:
+      - service: remote.send_command
+        data:
+          entity_id: remote.smart_tv
+          command: DPAD_LEFT
+
+  right:
+    sequence:
+      - service: remote.send_command
+        data:
+          entity_id: remote.smart_tv
+          command: DPAD_RIGHT
+
+  center:
+    sequence:
+      - service: remote.send_command
+        data:
+          entity_id: remote.smart_tv
+          command: DPAD_CENTER
+
+  back:
+    sequence:
+      - service: remote.send_command
+        data:
+          entity_id: remote.smart_tv
+          command: BACK
+
+  home:
+    sequence:
+      - service: remote.send_command
+        data:
+          entity_id: remote.smart_tv
+          command: HOME
+
+  previous:
+    sequence:
+      - service: remote.send_command
+        data:
+          entity_id: remote.smart_tv
+          command: MEDIA_PREVIOUS
+
+  next:
+    sequence:
+      - service: remote.send_command
+        data:
+          entity_id: remote.smart_tv
+          command: MEDIA_NEXT
+
+  youtube:
+    sequence:
+      - service: remote.turn_on
+        data:
+          entity_id: remote.smart_tv
+          activity: "https://www.youtube.com"
+
+  kodi:
+    sequence:
+      - service: remote.turn_on
+        data:
+          entity_id: remote.smart_tv
+          activity: "org.xbmc.kodi"
+
+  channel:
+    sequence:
+      - service: remote.turn_on
+        data:
+          entity_id: remote.smart_tv
+          activity: "market://launch?id=com.tcl.tv"
